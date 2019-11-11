@@ -1,0 +1,23 @@
+Exception in thread "main" java.lang.RuntimeException: Fail-fast during pool initialization
+	at com.zaxxer.hikari.pool.BaseHikariPool.initializeConnections(BaseHikariPool.java:500)
+	at com.zaxxer.hikari.pool.BaseHikariPool.<init>(BaseHikariPool.java:172)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:61)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:49)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:78)
+	at org.starloco.locos.database.Database.initializeConnection(Database.java:44)
+	at org.starloco.locos.kernel.Main.start(Main.java:56)
+	at org.starloco.locos.kernel.Main.main(Main.java:42)
+Caused by: java.sql.SQLException: Could not connect: Unknown database 'starloco_login'
+	at org.mariadb.jdbc.internal.SQLExceptionMapper.get(SQLExceptionMapper.java:149)
+	at org.mariadb.jdbc.internal.SQLExceptionMapper.throwException(SQLExceptionMapper.java:106)
+	at org.mariadb.jdbc.MySQLDataSource.getConnection(MySQLDataSource.java:302)
+	at com.zaxxer.hikari.pool.BaseHikariPool.addConnection(BaseHikariPool.java:396)
+	at com.zaxxer.hikari.pool.BaseHikariPool.initializeConnections(BaseHikariPool.java:498)
+	... 7 more
+Caused by: org.mariadb.jdbc.internal.common.QueryException: Could not connect: Unknown database 'starloco_login'
+	at org.mariadb.jdbc.internal.mysql.MySQLProtocol.checkErrorPacket(MySQLProtocol.java:558)
+	at org.mariadb.jdbc.internal.mysql.MySQLProtocol.connect(MySQLProtocol.java:500)
+	at org.mariadb.jdbc.internal.mysql.MySQLProtocol.connect(MySQLProtocol.java:709)
+	at org.mariadb.jdbc.internal.mysql.MySQLProtocol.<init>(MySQLProtocol.java:280)
+	at org.mariadb.jdbc.MySQLDataSource.getConnection(MySQLDataSource.java:300)
+	... 9 more
